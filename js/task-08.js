@@ -1,23 +1,22 @@
 const form = document.querySelector('.login-form');
 
-form.addEventListener('submit', (event) => {
-  event.preventDefault();
+form.addEventListener('submit', e => {
+  e.preventDefault();
 
-  const formData = new FormData(event.target);
-  const email = formData.get('email');
-  const password = formData.get('password');
+  const email = form.elements.email.value;
+  const password = form.elements.password.value;
 
-  if (email === '' || password === '') {
-    alert('Всі поля повинні бути заповнені!');
+  if (!email || !password) {
+    alert('All fields are required!');
     return;
   }
 
-  const formDataObj = {
-    email,
-    password,
+  const formData = {
+    email: email,
+    password: password
   };
 
-  console.log(formDataObj);
+  console.log(formData);
 
   form.reset();
 });
